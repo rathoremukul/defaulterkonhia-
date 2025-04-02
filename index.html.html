@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defaulter Kon Hai? App - व्यापारियों के लिए डिफॉल्टर ट्रैकिंग सॉल्यूशन</title>
+    <style>
+        :root {
+            --primary-color: #4285F4;
+            --secondary-color: #34A853;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --danger-color: #EA4335;
+            --warning-color: #FBBC05;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-color);
+        }
+        
+        .hero {
+            background: url('https://source.unsplash.com/random/1600x900/?business,accounting') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #3367d6;
+            transform: scale(1.05);
+        }
+        
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .contact {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Defaulter App</div>
+            <div class="tagline">व्यापारियों के लिए डिफॉल्टर ट्रैकिंग का डिजिटल समाधान</div>
+            <nav>
+                <ul>
+                    <li><a href="#features">विशेषताएँ</a></li>
+                    <li><a href="#how-it-works">कैसे काम करता है</a></li>
+                    <li><a href="#contact">संपर्क करें</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>अपने व्यापार को डिजिटल बनाएं</h1>
+            <p>डिफॉल्टर्स को ट्रैक करें, अपना पैसा वापस पाएं</p>
+            <a href="https://play.google.com/store/apps/details?id=com.mukul.defaulterkonhia" class="btn">Play Store पर डाउनलोड करें</a>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">विशेषताएँ</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">मोबाइल नंबर लॉगिन</h3>
+                    <p>अपने मोबाइल नंबर से आसानी से लॉगिन करें और OTP वेरिफिकेशन के साथ सुरक्षित रहें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">OTP वेरिफिकेशन</h3>
+                    <p>सुरक्षित OTP वेरिफिकेशन प्रक्रिया के साथ अपने खाते को सुरक्षित रखें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">डिफॉल्टर ट्रैकिंग</h3>
+                    <p>अपने सभी डिफॉल्टर्स की जानकारी एक जगह पर रखें और उन्हें आसानी से ट्रैक करें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">➕</div>
+                    <h3 class="feature-title">नए डिफॉल्टर जोड़ें</h3>
+                    <p>नए डिफॉल्टर्स को आसानी से जोड़ें और उनकी सभी जानकारी संग्रहित करें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">पुराने डिफॉल्टर देखें</h3>
+                    <p>पुराने डिफॉल्टर्स की जानकारी देखें, एडिट करें या डिलीट करें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">भाषा समर्थन</h3>
+                    <p>हिंदी और अंग्रेजी भाषाओं का समर्थन, आपकी सुविधा के अनुसार।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="how-it-works" class="features" style="background-color: #e9ecef;">
+        <div class="container">
+            <h2 class="section-title">कैसे काम करता है</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">1️⃣</div>
+                    <h3 class="feature-title">लॉगिन/साइनअप</h3>
+                    <p>अपने मोबाइल नंबर और पिन से लॉगिन करें। नए यूजर के लिए साइनअप ऑप्शन उपलब्ध है।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">2️⃣</div>
+                    <h3 class="feature-title">डैशबोर्ड</h3>
+                    <p>डैशबोर्ड पर अपना नाम और मोबाइल नंबर देखें। नया डिफॉल्टर जोड़ें या पुराने डिफॉल्टर देखें।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">3️⃣</div>
+                    <h3 class="feature-title">नया डिफॉल्टर जोड़ें</h3>
+                    <p>नए डिफॉल्टर की जानकारी भरें और सबमिट करें। डेटा सुरक्षित रूप से संग्रहित किया जाएगा।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">4️⃣</div>
+                    <h3 class="feature-title">पुराने डिफॉल्टर देखें</h3>
+                    <p>सभी पुराने डिफॉल्टर्स की लिस्ट देखें, एडिट या डिलीट करें, और कुल डिफॉल्टर्स और कुल राशि का सारांश देखें।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">संपर्क करें</h2>
+            <div class="contact-info">
+                <div>
+                    <div class="contact-item">
+                        <h3 class="contact-title">ईमेल</h3>
+                        <a href="mailto:gamezonemukul@gmail.com" class="contact-link">gamezonemukul@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3 class="contact-title">सपोर्ट</h3>
+                        <p>किसी भी समस्या या सुझाव के लिए हमसे संपर्क करें।</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="contact-item">
+                        <h3 class="contact-title">डाउनलोड</h3>
+                        <p>हमारी ऐप Google Play Store पर उपलब्ध है।</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.mukul.defaulterkonhia" class="btn" style="margin-top: 15px;">डाउनलोड करें</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Defaulter kon hai? App. सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+</body>
+</html>
